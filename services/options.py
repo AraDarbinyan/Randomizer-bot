@@ -1,6 +1,6 @@
 from sqlalchemy import select, delete
-from database import AsyncSessionLocal
-from models import User, Option
+from db.database import AsyncSessionLocal
+from db.models import User, Option
 
 
 async def add_option_for_user(telegram_user_id: int, text: str) -> None:

@@ -1,6 +1,6 @@
 from sqlalchemy import select
-from database import AsyncSessionLocal
-from models import User
+from db.database import AsyncSessionLocal
+from db.models import User
 
 
 async def get_or_create_user(telegram_user_id: int) -> User:

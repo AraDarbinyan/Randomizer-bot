@@ -10,8 +10,8 @@ from telegram.ext import (
 
 from config import BOT_TOKEN
 from handlers.bot_handlers import *
-from database import engine
-from models import Base
+from db.database import engine
+from db.models import Base
 
 
 if not BOT_TOKEN:
@@ -21,7 +21,7 @@ if not BOT_TOKEN:
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
-# set higher logging level for httpx to avoid all GET and POST requests being logged
+
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
