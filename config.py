@@ -48,5 +48,45 @@ TEXTS = {
         "random": "🎲 Random choice: \"{choice}\"",
         "cleared": "List cleared.",
         "cancel": "Cancelled.",
+    },
+
+    "de": {
+        "start": "Hallo! Ich bin ein Zufallsbot 🎲\n\n"
+                 "Ich helfe dir, zufällig etwas auszuwählen.\n\n"
+                 "Befehle:\n"
+                 "/add – Optionen hinzufügen\n"
+                 "/list – Liste anzeigen\n"
+                 "/random – zufällig wählen\n"
+                 "/clear – Liste löschen\n"
+                 "/language – Sprache ändern",
+
+        "add_prompt": "Sende Optionen einzeln. Wenn fertig – /done.",
+        "added": "Option hinzugefügt: \"{option}\"",
+        "done": "Fertig!",
+        "empty": "Liste ist leer.",
+        "list": "Deine Optionen:\n\n{options}",
+        "random": "🎲 Zufällige Auswahl: \"{choice}\"",
+        "cleared": "Liste gelöscht.",
+        "cancel": "Abgebrochen.",
+    },
+
+    "es": {
+        "start": "¡Hola! Soy un bot aleatorio 🎲\n\n"
+                 "Puedo ayudarte a elegir algo al azar.\n\n"
+                 "Comandos:\n"
+                 "/add – añadir opciones\n"
+                 "/list – mostrar lista\n"
+                 "/random – elegir al azar\n"
+                 "/clear – limpiar lista\n"
+                 "/language – cambiar idioma",
+
+        "add_prompt": "Envía opciones una por una. Cuando termines – /done.",
+        "added": "Opción añadida: \"{option}\"",
+        "done": "¡Listo!",
+        "empty": "La lista está vacía.",
+        "list": "Tus opciones:\n\n{options}",
+        "random": "🎲 Elección aleatoria: \"{choice}\"",
+        "cleared": "Lista limpiada.",
+        "cancel": "Cancelado.",
     }
 }

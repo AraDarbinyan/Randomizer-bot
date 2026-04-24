@@ -21,7 +21,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_user_language(user_id)
 
     if not lang:
-        keyboard = [["Русский🇷🇺", "English🇬🇧"]]
+        keyboard = [["Русский🇷🇺", "English🇬🇧"],
+                    ["🇩🇪 Deutsch", "🇪🇸 Español"]]
         await update.message.reply_text(
             "Выбери язык / Choose a language:",
             reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -32,7 +33,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def language(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["Русский🇷🇺", "English🇬🇧"]]
+    keyboard = [["🇷🇺 Русский", "🇬🇧 English"],
+                ["🇩🇪 Deutsch", "🇪🇸 Español"]]
     await update.message.reply_text(
         "Выбери язык / Choose a language:",
         reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -44,10 +46,14 @@ async def set_language(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     choice = update.message.text.strip()
 
-    if choice == "Русский🇷🇺":
+    if "Русский" in choice:
         lang = "ru"
-    elif choice == "English🇬🇧":
+    elif "English" in choice:
         lang = "en"
+    elif "Deutsch" in choice:
+        lang = "de"
+    elif "Español" in choice:
+        lang = "es"
     else:
         await update.message.reply_text(
             "Пожалуйста, выбери язык кнопкой / Please choose a language using the buttons."
