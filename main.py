@@ -10,6 +10,7 @@ from telegram.ext import (
 
 from config import BOT_TOKEN
 from handlers.bot_handlers import *
+from handlers.error_handler import error_handler
 from db.database import engine
 from db.models import Base
 
@@ -60,6 +61,7 @@ def main():
     app.add_handler(CommandHandler("list", list_options))
     app.add_handler(CommandHandler("random", random_choice))
     app.add_handler(CommandHandler("clear", clear))
+    app.add_error_handler(error_handler)
 
     app.run_polling()
 

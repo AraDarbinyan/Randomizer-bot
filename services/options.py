@@ -1,6 +1,16 @@
 from sqlalchemy import select, delete
 from db.database import AsyncSessionLocal
 from db.models import User, Option
+from sqlalchemy import select, func
+
+async def count_user_options(telegram_user_id: int) -> int:
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            select(func.count(Option.id))
+            .join(User, Option.user_id == User.id)
+            .where(User.telegram_user_id == telegram_user_id)
+        )
+        return result.scalar_one()
 
 
 async def add_option_for_user(telegram_user_id: int, text: str) -> None:

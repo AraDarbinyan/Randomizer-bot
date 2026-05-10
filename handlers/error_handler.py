@@ -1,6 +1,6 @@
 from telegram.ext import ContextTypes
 from services.users import get_user_language
-from bot_handlers import t
+from handlers.bot_handlers import t
 import logging
 
 logger = logging.getLogger(__name__)

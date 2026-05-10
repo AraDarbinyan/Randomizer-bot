@@ -3,7 +3,7 @@ import random
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import ContextTypes, ConversationHandler
 
-from config import TEXTS
+from config import TEXTS, MAX_OPTION_LENGTH, MAX_OPTIONS_PER_USER
 from services.users import get_user_language, set_user_language
 from services.options import *
 
@@ -84,15 +84,36 @@ async def add(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return ADDING_OPTIONS
 
 
+
 async def add_option(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     lang = await get_user_language(user_id)
 
-    text = update.message.text.strip()
+    option = update.message.text.strip()
 
-    await add_option_for_user(user_id, text)
+    if option.startswith("/"):
+        return ADDING_OPTIONS
 
-    await update.message.reply_text(t(lang, "added", option=text))
+    if len(option) > MAX_OPTION_LENGTH:
+        await update.message.reply_text(
+            t(lang, "option_too_long", max=MAX_OPTION_LENGTH)
+        )
+        return ADDING_OPTIONS
+
+    count = await count_user_options(user_id)
+
+    if count >= MAX_OPTIONS_PER_USER:
+        await update.message.reply_text(
+            t(lang, "options_limit", max=MAX_OPTIONS_PER_USER)
+        )
+        return ADDING_OPTIONS
+
+    await add_option_for_user(user_id, option)
+
+    await update.message.reply_text(
+        t(lang, "added", option=option)
+    )
+
     return ADDING_OPTIONS
 
 

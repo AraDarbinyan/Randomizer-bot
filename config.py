@@ -7,6 +7,9 @@ DATABASE_URL = os.getenv(
     "sqlite+aiosqlite:///./bot.db"
 )
 
+MAX_OPTION_LENGTH = 255
+MAX_OPTIONS_PER_USER = 50
+
 TEXTS = {
     "ru": {
         "start": "Привет! Я бот-рандомайзер 🎲\n\n"
@@ -42,6 +45,8 @@ TEXTS = {
         "random": "🎲 Случайный выбор: «{choice}»",
         "cleared": "Я очистил список.",
         "cancel": "Отменил.",
+        "option_too_long": "Вариант слишком длинный (максимум {max} символов).",
+        "options_limit": "Ты достиг лимита вариантов ({max}). Удали что-нибудь через /remove.",
     },
 
     "en": {
@@ -78,6 +83,8 @@ TEXTS = {
         "random": "🎲 Random choice: \"{choice}\"",
         "cleared": "List cleared.",
         "cancel": "Cancelled.",
+        "option_too_long": "Option is too long (max {max} characters).",
+        "options_limit": "You reached the limit ({max}). Remove some options with /remove.",
     },
 
     "de": {
@@ -112,6 +119,8 @@ TEXTS = {
         "random": "🎲 Zufällige Auswahl: \"{choice}\"",
         "cleared": "Liste gelöscht.",
         "cancel": "Abgebrochen.",
+        "option_too_long": "Option ist zu lang (maximal {max} Zeichen).",
+        "options_limit": "Du hast das Limit ({max}) erreicht. Entferne einige Optionen mit /remove.",
     },
 
     "es": {
@@ -146,5 +155,7 @@ TEXTS = {
         "random": "🎲 Elección aleatoria: \"{choice}\"",
         "cleared": "Lista limpiada.",
         "cancel": "Cancelado.",
+        "option_too_long": "La opción es demasiado larga (máximo {max} caracteres).",
+        "options_limit": "Has alcanzado el límite ({max}). Elimina algunas opciones con /remove.",
     }
 }
