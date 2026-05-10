@@ -31,6 +31,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(t(lang, "start"))
 
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
+    lang = await get_user_language(user_id)
+
+    await update.message.reply_text(t(lang, "help"))
+
 
 async def language(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [["🇷🇺 Русский", "🇬🇧 English"],

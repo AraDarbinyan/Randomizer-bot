@@ -56,6 +56,7 @@ def main():
     )
 
     app.add_handler(conv_handler)
+    app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("list", list_options))
     app.add_handler(CommandHandler("random", random_choice))
     app.add_handler(CommandHandler("clear", clear))
