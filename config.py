@@ -19,6 +19,7 @@ TEXTS = {
                  "/help – помощь\n"
                  "/list – показать текущие варианты\n"
                  "/random – случайно выбрать\n"
+                 "/remove удалить вариант\n"
                  "/clear – очистить список\n"
                  "/language – сменить язык",
 
@@ -31,7 +32,7 @@ TEXTS = {
                         "/done – завершить добавление\n"
                         "/list – показать варианты\n"
                         "/random – случайный выбор\n"
-                        "/remove <номер> – удалить вариант\n"
+                        "/remove удалить вариант\n"
                         "/clear – очистить список\n"
                         "/cancel – отменить действие"
                 ,
@@ -47,6 +48,10 @@ TEXTS = {
         "cancel": "Отменил.",
         "option_too_long": "Вариант слишком длинный (максимум {max} символов).",
         "options_limit": "Ты достиг лимита вариантов ({max}). Удали что-нибудь через /remove.",
+        "remove_choose": "Выбери вариант, который хочешь удалить:",
+        "remove_empty": "У тебя пока нет вариантов для удаления.",
+        "remove_success": "Удалил вариант: «{option}»",
+        "remove_not_found": "Вариант уже удалён или не найден.",
     },
 
     "en": {
@@ -57,6 +62,7 @@ TEXTS = {
                  "/add – add options\n"
                  "/list – show options\n"
                  "/random – choose randomly\n"
+                 "/remove remove option\n"
                  "/clear – clear list\n"
                  "/language – change language",
 
@@ -69,7 +75,7 @@ TEXTS = {
                     "/done – finish adding\n"
                     "/list – show options\n"
                     "/random – random choice\n"
-                    "/remove <number> – remove option\n"
+                    "/remove remove option\n"
                     "/clear – clear list\n"
                     "/cancel – cancel action"
                 ,
@@ -85,6 +91,10 @@ TEXTS = {
         "cancel": "Cancelled.",
         "option_too_long": "Option is too long (max {max} characters).",
         "options_limit": "You reached the limit ({max}). Remove some options with /remove.",
+        "remove_choose": "Choose the option you want to remove:",
+        "remove_empty": "You don't have any options to remove yet.",
+        "remove_success": "Removed option: \"{option}\"",
+        "remove_not_found": "Option was already removed or not found.",
     },
 
     "de": {
@@ -95,6 +105,7 @@ TEXTS = {
                  "/add – Optionen hinzufügen\n"
                  "/list – Liste anzeigen\n"
                  "/random – zufällig wählen\n"
+                 "/remove Option entfernen\n"
                  "/clear – Liste löschen\n"
                  "/language – Sprache ändern",
         "help": 
@@ -106,7 +117,7 @@ TEXTS = {
                 "/done – Hinzufügen beenden\n"
                 "/list – Optionen anzeigen\n"
                 "/random – zufällig auswählen\n"
-                "/remove <Nummer> – Option entfernen\n"
+                "/remove Option entfernen\n"
                 "/clear – Liste löschen\n"
                 "/cancel – Aktion abbrechen"
             ,
@@ -121,6 +132,10 @@ TEXTS = {
         "cancel": "Abgebrochen.",
         "option_too_long": "Option ist zu lang (maximal {max} Zeichen).",
         "options_limit": "Du hast das Limit ({max}) erreicht. Entferne einige Optionen mit /remove.",
+        "remove_choose": "Wähle die Option aus, die du entfernen möchtest:",
+        "remove_empty": "Du hast noch keine Optionen zum Entfernen.",
+        "remove_success": "Option entfernt: \"{option}\"",
+        "remove_not_found": "Option wurde bereits entfernt oder nicht gefunden.",
     },
 
     "es": {
@@ -131,6 +146,7 @@ TEXTS = {
                  "/add – añadir opciones\n"
                  "/list – mostrar lista\n"
                  "/random – elegir al azar\n"
+                 "/remove eliminar opción\n"
                  "/clear – limpiar lista\n"
                  "/language – cambiar idioma",
         "help": 
@@ -142,7 +158,7 @@ TEXTS = {
                 "/done – terminar de añadir\n"
                 "/list – mostrar opciones\n"
                 "/random – elegir al azar\n"
-                "/remove <número> – eliminar opción\n"
+                "/remove eliminar opción\n"
                 "/clear – limpiar lista\n"
                 "/cancel – cancelar acción"
             ,
@@ -157,5 +173,9 @@ TEXTS = {
         "cancel": "Cancelado.",
         "option_too_long": "La opción es demasiado larga (máximo {max} caracteres).",
         "options_limit": "Has alcanzado el límite ({max}). Elimina algunas opciones con /remove.",
+        "remove_choose": "Elige la opción que quieres eliminar:",
+        "remove_empty": "Todavía no tienes opciones para eliminar.",
+        "remove_success": "Opción eliminada: \"{option}\"",
+        "remove_not_found": "La opción ya fue eliminada o no existe.",
     }
 }

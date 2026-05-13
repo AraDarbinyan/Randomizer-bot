@@ -5,7 +5,8 @@ from telegram.ext import (
     CommandHandler,
     MessageHandler,
     ConversationHandler,
-    filters
+    filters,
+    CallbackQueryHandler
 )
 
 from config import BOT_TOKEN
@@ -61,6 +62,8 @@ def main():
     app.add_handler(CommandHandler("list", list_options))
     app.add_handler(CommandHandler("random", random_choice))
     app.add_handler(CommandHandler("clear", clear))
+    app.add_handler(CommandHandler("remove", remove_option))
+    app.add_handler(CallbackQueryHandler(remove_option_callback, pattern=r"^remove:\d+$"))
     app.add_error_handler(error_handler)
 
     app.run_polling()

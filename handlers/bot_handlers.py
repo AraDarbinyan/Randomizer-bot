@@ -1,6 +1,6 @@
 import random
 
-from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
+from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, ConversationHandler
 
 from config import TEXTS, MAX_OPTION_LENGTH, MAX_OPTIONS_PER_USER
@@ -167,3 +167,64 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(t(lang, "cancel"))
     return ConversationHandler.END
+
+async def remove_option(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
+    lang = await get_user_language(user_id)
+
+    options = await get_user_options_with_ids(user_id)
+
+    if not options:
+        await update.message.reply_text(t(lang, "remove_empty"))
+        return
+
+    keyboard = []
+
+    row = []
+
+    for option_id, option_text in options:
+        row.append(
+            InlineKeyboardButton(
+                text=option_text,
+                callback_data=f"remove:{option_id}"
+            )
+        )
+
+        if len(row) == 2:
+            keyboard.append(row)
+            row = []
+
+
+    if row:
+        keyboard.append(row)
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text(
+        t(lang, "remove_choose"),
+        reply_markup=reply_markup
+    )
+
+async def remove_option_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    user_id = query.from_user.id
+    lang = await get_user_language(user_id)
+
+    data = query.data
+
+    if not data.startswith("remove:"):
+        return
+
+    option_id = int(data.split(":")[1])
+
+    removed_option = await remove_option_by_id(user_id, option_id)
+
+    if removed_option is None:
+        await query.edit_message_text(t(lang, "remove_not_found"))
+        return
+
+    await query.edit_message_text(
+        t(lang, "remove_success", option=removed_option)
+    )

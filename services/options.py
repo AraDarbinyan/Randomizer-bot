@@ -53,3 +53,39 @@ async def clear_user_options(telegram_user_id: int) -> None:
 
         await session.execute(delete(Option).where(Option.user_id == user.id))
         await session.commit()
+
+
+
+async def get_user_options_with_ids(telegram_user_id: int) -> list[tuple[int, str]]:
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            select(Option.id, Option.text)
+            .join(User, Option.user_id == User.id)
+            .where(User.telegram_user_id == telegram_user_id)
+            .order_by(Option.id)
+        )
+
+        return list(result.all())
+    
+async def remove_option_by_id(telegram_user_id: int, option_id: int) -> str | None:
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            select(Option)
+            .join(User, Option.user_id == User.id)
+            .where(
+                User.telegram_user_id == telegram_user_id,
+                Option.id == option_id
+            )
+        )
+
+        option = result.scalar_one_or_none()
+
+        if option is None:
+            return None
+
+        option_text = option.text
+
+        await session.delete(option)
+        await session.commit()
+
+        return option_text
