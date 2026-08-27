@@ -5,8 +5,14 @@ load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-DATABASE_URL = os.getenv( "DATABASE_URL",
-    "sqlite+aiosqlite:///./bot.db")
+DATABASE_URL = os.getenv( "DATABASE_URL")
+
+if DATABASE_URL and DATABASE_URL.startswith("postgresql://"):
+	DATABASE_URL = DATABASE_URL.replace(
+		"postgresql://",
+		"postgresql+asyncpg://",
+		1
+	)
 
 MAX_OPTION_LENGTH = 255
 MAX_OPTIONS_PER_USER = 50
