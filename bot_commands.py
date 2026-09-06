@@ -4,7 +4,6 @@ COMMANDS = {
     "ru": [
         BotCommand("start", "Запустить бота"),
         BotCommand("add", "Добавить варианты"),
-        BotCommand("done", "Завершить добавление"),
         BotCommand("list", "Показать мои варианты"),
         BotCommand("random", "Выбрать случайный вариант"),
         BotCommand("remove", "Удалить вариант"),
@@ -16,7 +15,6 @@ COMMANDS = {
     "en": [
         BotCommand("start", "Start the bot"),
         BotCommand("add", "Add options"),
-        BotCommand("done", "Finish adding options"),
         BotCommand("list", "Show my options"),
         BotCommand("random", "Choose a random option"),
         BotCommand("remove", "Remove an option"),
@@ -28,7 +26,6 @@ COMMANDS = {
     "de": [
         BotCommand("start", "Bot starten"),
         BotCommand("add", "Optionen hinzufügen"),
-        BotCommand("done", "Hinzufügen beenden"),
         BotCommand("list", "Meine Optionen anzeigen"),
         BotCommand("random", "Zufällige Option auswählen"),
         BotCommand("remove", "Option entfernen"),
@@ -40,7 +37,6 @@ COMMANDS = {
     "es": [
         BotCommand("start", "Iniciar el bot"),
         BotCommand("add", "Añadir opciones"),
-        BotCommand("done", "Terminar de añadir"),
         BotCommand("list", "Mostrar mis opciones"),
         BotCommand("random", "Elegir una opción al azar"),
         BotCommand("remove", "Eliminar una opción"),
