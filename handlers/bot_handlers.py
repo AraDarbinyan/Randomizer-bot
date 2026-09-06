@@ -1,12 +1,17 @@
 import random
 
-from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+    Update,
+)
 from telegram.ext import ContextTypes, ConversationHandler
 
-from config import TEXTS, MAX_OPTION_LENGTH, MAX_OPTIONS_PER_USER
-from services.users import get_user_language, set_user_language
+from config import MAX_OPTION_LENGTH, MAX_OPTIONS_PER_USER, TEXTS
 from services.options import *
-
+from services.users import get_user_language, set_user_language
 
 CHOOSING_LANGUAGE = 0
 ADDING_OPTIONS = 1

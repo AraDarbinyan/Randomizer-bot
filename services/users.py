@@ -1,4 +1,5 @@
 from sqlalchemy import select
+
 from db.database import AsyncSessionLocal
 from db.models import User
 

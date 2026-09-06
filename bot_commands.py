@@ -1,6 +1,5 @@
 from telegram import BotCommand, BotCommandScopeChat
 
-
 COMMANDS = {
     "ru": [
         BotCommand("start", "Запустить бота"),

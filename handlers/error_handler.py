@@ -1,7 +1,9 @@
-from telegram.ext import ContextTypes
-from services.users import get_user_language
-from handlers.bot_handlers import t
 import logging
+
+from telegram.ext import ContextTypes
+
+from handlers.bot_handlers import t
+from services.users import get_user_language
 
 logger = logging.getLogger(__name__)
 
@@ -13,10 +15,11 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
 
         try:
             lang = await get_user_language(user_id)
-        except:
+        except Exception:
+            logger.exception("Failed to get user language")
             lang = "ru"
 
         try:
             await update.effective_message.reply_text(t(lang, "error"))
-        except:
-            pass
+        except Exception:
+                logger.exception("Failed to send error message to user")

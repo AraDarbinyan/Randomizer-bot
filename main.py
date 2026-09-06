@@ -1,21 +1,17 @@
 import logging
-import asyncio
+
 from telegram.ext import (
     ApplicationBuilder,
+    CallbackQueryHandler,
     CommandHandler,
-    MessageHandler,
     ConversationHandler,
+    MessageHandler,
     filters,
-    CallbackQueryHandler
 )
 
 from config import BOT_TOKEN
 from handlers.bot_handlers import *
 from handlers.error_handler import error_handler
-from db.database import engine
-from db.models import Base
-from bot_commands import set_default_commands
-
 
 if not BOT_TOKEN:
     raise ValueError('Bot is not founded')

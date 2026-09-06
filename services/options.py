@@ -1,7 +1,8 @@
-from sqlalchemy import select, delete
+from sqlalchemy import delete, func, select
+
 from db.database import AsyncSessionLocal
-from db.models import User, Option
-from sqlalchemy import select, func
+from db.models import Option, User
+
 
 async def count_user_options(telegram_user_id: int) -> int:
     async with AsyncSessionLocal() as session:
