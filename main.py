@@ -14,6 +14,7 @@ from handlers.bot_handlers import *
 from handlers.error_handler import error_handler
 from db.database import engine
 from db.models import Base
+from bot_commands import set_default_commands
 
 
 if not BOT_TOKEN:
@@ -31,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 def main():
 
-    app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app = ApplicationBuilder().token(BOT_TOKEN).post_init().build()
 
     conv_handler = ConversationHandler(
         entry_points=[
