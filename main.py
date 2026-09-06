@@ -9,6 +9,7 @@ from telegram.ext import (
     filters,
 )
 
+from bot_commands import set_default_commands
 from config import BOT_TOKEN
 from handlers.bot_handlers import *
 from handlers.error_handler import error_handler
@@ -28,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 def main():
 
-    app = ApplicationBuilder().token(BOT_TOKEN).post_init().build()
+    app = ApplicationBuilder().token(BOT_TOKEN).post_init(set_default_commands).build()
 
     conv_handler = ConversationHandler(
         entry_points=[
